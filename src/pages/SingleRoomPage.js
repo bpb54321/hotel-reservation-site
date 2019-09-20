@@ -1,7 +1,11 @@
 import React from "react";
 
-export const SingleRoomPage = () => {
+export const SingleRoomPage = ({match}) => {
   return (
-    <h1>Single Room Page</h1>
+    <div>
+      <h1>Single Room Page</h1>
+      <p>Room Id: {match.params.slug}</p>
+    </div>
+
   );
 };
