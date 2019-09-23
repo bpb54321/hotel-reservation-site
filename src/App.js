@@ -16,6 +16,8 @@ function App() {
     window.addEventListener("resize", () => {
       setScreenWidthZone(getScreenWidthZone());
     });
+
+    setScreenWidthZone(getScreenWidthZone());
   }, []);
 
   return (
