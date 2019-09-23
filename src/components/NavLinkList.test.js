@@ -26,21 +26,6 @@ describe(`NavLinkList`, () => {
     });
 
     const listItems = wrapper.getAllByTestId(`nav-link-list-item`);
-    /**
-     * @type {DOMRect}
-     */
-    let previousItemBoundingRect;
-    for (let i = 0; i < listItems.length; i++) {
-      const listItem = listItems[i];
-      const currentItemBoundingRect = listItem.getBoundingClientRect();
-      if (i > 0) {
-        expect(previousItemBoundingRect.right).toBeLessThan(currentItemBoundingRect.left);
-        expect(previousItemBoundingRect.top).toBe(currentItemBoundingRect.top);
-        expect(previousItemBoundingRect.bottom).toBe(currentItemBoundingRect.bottom);
-      }
-
-      previousItemBoundingRect = currentItemBoundingRect;
-    }
 
     expect(wrapper.queryByTestId("menu-toggle-button")).toBeNull();
 
