@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {WindowWidthZoneContext, windowWidthZones} from "../context/WindowWidthZoneContext";
+import {WindowWidthZoneContext, WINDOW_WIDTH_ZONES} from "../context/WindowWidthZoneContext";
 import {NavLink} from "react-router-dom";
 
 const defaultStyle = {
@@ -15,7 +15,7 @@ export const NavLinkList = () => {
 
   useEffect(() => {
 
-    if (windowWidthZone === windowWidthZones.DESKTOP) {
+    if (windowWidthZone === WINDOW_WIDTH_ZONES.DESKTOP) {
       setStyle({
         ...defaultStyle,
         flexFlow: "row nowrap",
@@ -31,10 +31,10 @@ export const NavLinkList = () => {
 
   return (
     <ul style={style}>
-      <li>
+      <li data-testid={"nav-link-list-item"}>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li>
+      <li data-testid={"nav-link-list-item"}>
         <NavLink to={"/rooms/"}>Rooms</NavLink>
       </li>
     </ul>
