@@ -1,11 +1,11 @@
 import React from "react";
 
-export const windowWidthZones = {
+export const WINDOW_WIDTH_ZONES = {
   "MOBILE": "mobile",
   "DESKTOP": "desktop",
 };
 
-export const WindowWidthZoneContext = React.createContext(windowWidthZones.DESKTOP);
+export const WindowWidthZoneContext = React.createContext(WINDOW_WIDTH_ZONES.DESKTOP);
 
 /**
  * Determines the screen width zone based on the current width of the document.
@@ -13,8 +13,8 @@ export const WindowWidthZoneContext = React.createContext(windowWidthZones.DESKT
  */
 export function getScreenWidthZone() {
   if (document.documentElement.clientWidth >= 768) {
-    return windowWidthZones.DESKTOP;
+    return WINDOW_WIDTH_ZONES.DESKTOP;
   } else {
-    return windowWidthZones.MOBILE;
+    return WINDOW_WIDTH_ZONES.MOBILE;
   }
 }
