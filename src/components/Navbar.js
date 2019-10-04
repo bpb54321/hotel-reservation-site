@@ -10,7 +10,7 @@ export const Navbar = () => {
   const windowWidthZone = useContext(WindowWidthZoneContext);
 
   return (
-    <header>
+    <header data-testid={"navbar"}>
       <nav>
         <Link to={"/"}>
           <img src={logo} alt="Beach Resort"/>
