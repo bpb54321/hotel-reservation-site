@@ -43,3 +43,38 @@ export function assertThatElementsAreVerticallyAligned($elements) {
     previousItemBoundingRect = currentItemBoundingRect;
   }
 }
+
+/**
+ * @typedef {Object} SpaceSpecification - a object that specifies the space of an element inside of another element
+ * @prop {number} [top]
+ * @prop {number} [right]
+ * @prop {number} [bottom]
+ * @prop {number} [left]
+ */
+
+/**
+ * Asserts that innerElement is inside outerElement, with a certain amount of space between the two elements.
+ * @param innerElement {HTMLElement} A single element which is inside outerElement.
+ * @param outerElement {HTMLElement} A single element which contains innerElement.
+ * @param space {SpaceSpecification} The space that should be between innerElement and outerElement.
+ */
+export function elementInsideElement(innerElement, outerElement, space) {
+  const innerElementBoundingRect = innerElement.getBoundingClientRect();
+  const outerElementBoundingRect = outerElement.getBoundingClientRect();
+
+  for (const side in space) {
+    let differenceBetweenSides;
+    switch (side) {
+      case "right":
+      case "bottom":
+        differenceBetweenSides = outerElementBoundingRect[side] - innerElementBoundingRect[side];
+        break;
+      default:
+        differenceBetweenSides = innerElementBoundingRect[side] - outerElementBoundingRect[side];
+    }
+    expect(differenceBetweenSides)
+      .to.be.closeTo(space[side], 1, `Expected the space between the ` +
+      `${side} of the inner element and the ${side} of the outer element to be about equal to ${space[side]}`);
+  }
+
+}
